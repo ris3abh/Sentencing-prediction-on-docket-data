@@ -20,6 +20,6 @@ Since there is an imbalance in the dataset we will have to use artificial oversa
 Once the data preprocessing is done, we developed 4 models to predict the sentencing. Since it is a classification problem.-
 
 1. Multiclass Classification using deep learning - accuracy = 70%
-2. Decision Tree Multiclass Classifier - accuracy = 
+2. Decision Tree Multiclass Classifier - accuracy = 63%
 3. Naive Bayes Multiclass Classifier - accuracy = 
 4. XGBoost Multiclass Classifier - accuracy = 73% accuracy.
