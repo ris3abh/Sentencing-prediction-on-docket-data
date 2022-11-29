@@ -4,7 +4,7 @@ This machine learning and deep learning project is the final project for the CS-
 Here using various variables like the age at arrest, description of crime, race, sex and more a prediction is made
 about what would be the type of sentencing. 
 
-##describing the dataset:
+## describing the dataset:
 **Municipal Court**:
 
 - Municipal court is the place where lower-level crimes are adjudicated in the City of Philadelphia. Cases that involve only misdemeanor charges are adjudicated entirely in Municipal court, and then the defendant has the option to appeal the decision to the Court of Common Pleas. Cases that involve felonies start in Municipal Court, where the judge makes an initial determination of whether the Commonwealth has shown probable cause that the defendant committed the crimes. If so, the charges are "held for court" and then move on to the Court of Common Pleas.
