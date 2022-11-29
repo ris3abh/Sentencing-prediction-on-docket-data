@@ -93,34 +93,6 @@ Note: there is one giant .csv with the data for all years, as well as smaller .c
 | period | Sentenced period for offense; Seemingly free text field with values like "LIFE", "3 days flat", "9 - 23 months" |
 | sentence_type | Sentence type for offense; One of: "Confinement", "Probation", "No Further Penalty", "Merged", "IPP" |
 
-## bail.csv
-
-This dataset includes information on the [bail](#bail) history of a docket. Bail is set per docket (not per individual offense). There are multiple actions that occur in relation to bail, e.g. bail is first set, bail is increased/decreased, bail type is changed, or revoked, etc.
-
-Note: there is one giant .csv with the data for all years, as well as smaller .csvs with short time spans.  All can be downloaded at [data_links.md](data_links.md)
-
-| Variable | Description |
-| ----------------| ---------------------------------------- |
-| [docket](#docket)_id | Unique identifier of docket |
-| action_date | date of bail-related action.  Year and month are preserved, day is set to 1 for some level of deidentification|
-| action_type_name | type of bail action taken (e.g. "Increase Bail", "Change Bail Type", "Reinstate", "Revoke", etc.) |
-| [type_name](#bail-types) | type of bail (e.g. "ROR", "Monetary", "Unsecured", etc.) |
-| percentage | percent of total_amount that must be paid in order to have the defendant released from detention |
-| total_amount | total bail amount |
-| registry_entry_code | free text, often contains a more detailed description of the action |
-| participant_name__title | title of actors (e.g. "Judge", "President Judge", "District Attorney", etc.) |
-| participant_name__last_name | last name of actor |
-| participant_name__first_name | We first name of actor |
-
-## defendant_docket_ids.csv
-
-In order to track whether a defendant is a multiple offender (in order to help explain severity / leniency of bail and/or sentencing), we created a "defendant_id" so you can look up defendants and their dockets:
-
-| Variable | Description |
-| ----------------| ---------------------------------------- |
-| defendant_id | Unique identifier of defendant |
-| docket_id | Unique identifier of docket |
-
 ## statutes.csv
 
 Useful for looking up laws or grouping them by legal domain.
@@ -160,23 +132,6 @@ In summary data, there are 6 discrete values associated with offense grade, unde
 - **C**: ???
 - **H**: Homicide
 - **NULL**
-
-### bail
-
-"Bail is the tool, which the courts use to assure a defendant’s appearance at future court dates. [...] Bail is set in all misdemeanor and felony cases, while a defendant is not entitled to bail if he is charged with an offense punishable by death or life in prison. If a judge sets cash bail, the defendant can be released from detention in county jail when someone posts that amount on the defendant’s behalf. The person posting bail is known as the “surety.” In some cases, the judge may allow the defendant to post only 5% or 10% of the total bail amount." (see ["Bail Basics in Pennsylvania"](https://www.mattmlaw.com/blog/2013/04/bail-basics-in-pennsylvania/) for more info.)
-
-### bail types
-
-7 discrete values such as "ROR" and "Monetary".
-
-Standard 7 bail types listed [here](https://herbertbailbonds.com/7-types-bail-bonds-obtained/)
-- **ROR**: “released on own recognizance”, which means that a defendant must simply promise to appear at all future court dates
-- **Surety Bonds**
-- **Cash Bail Bonds**
-- **Property Bonds**
-- **Citation Release**
-- **Immigration Bail Bonds**
-- **Federal Bail Bonds**
 
 ### court type
 In this dataset, there are 3 discrete values associated with court type: "PAC", "CP", "MC", under column name `court_office__court__court_type`
