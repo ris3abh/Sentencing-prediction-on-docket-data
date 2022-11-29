@@ -21,5 +21,7 @@ Once the data preprocessing is done, we developed 4 models to predict the senten
 
 1. Multiclass Classification using deep learning - accuracy = 70%
 2. Decision Tree Multiclass Classifier - accuracy = 63%
-3. Naive Bayes Multiclass Classifier - accuracy = 
-4. XGBoost Multiclass Classifier - accuracy = 73% accuracy.
+3. Naive Bayes Multiclass Classifier - accuracy = 72%
+4. XGBoost Multiclass Classifier - accuracy = 73%
+
+
