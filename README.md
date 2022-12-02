@@ -122,16 +122,28 @@ There are 6 discrete types of dispositions listed in the data, which were listed
 - **NULL**: NULL
 
 ### offense grade
-In Pennsylvania, all crimes are grading as a summary (S), misdemeanor (M), or a felony (F) offense. Their corresponding sentence guide can be found [here](https://www.lampmanlaw.com/offense-gradings-and-procedures)
+In Pennsylvania, all crimes are grading as a Murder (M), summary (S), misdemeanor (Mn), or a felony (F) offense. Their corresponding sentence guide can be found [here](https://www.lampmanlaw.com/offense-gradings-and-procedures)
 
-In summary data, there are 6 discrete values associated with offense grade, under column name `grade_type`
+In summary data, there are discrete values associated with offense grade, under column name `grade_type`
 
-- **M**: misdemeanor
-- **F**:felony
-- **S**: summary; minor infractions. Examples of these offenses are: disorderly conduct, public drunkenness, harassment, retail theft (first offense), underage drinking
-- **C**: ???
-- **H**: Homicide
-- **NULL**
+| id   | Category                   | Grade | Description                   |
+| ---- | -------------------------- | ----- | ----------------------------- |
+| 1    | Murder                     | M     | Murder                        |
+| 2    | Homicide                   | H1    | Homicide (1st Degree)         |
+| 3    | Homicide                   | H2    | Homicide (2nd Degree)         |
+| 4    | Homicide                   | H3    | Homicide (3rd Degree)         |
+| 5    | Felony                     | F1    | Felony (1st Degree)           |
+| 6    | Felony                     | F2    | Felony (2nd Degree)           |
+| 7    | Felony                     | F3    | Felony (3rd Degree)           |
+| 8    | Felony                     | F     | Ungraded Felony               |
+| 9    | Misdemeanor                | M1    | Misdemeanor (1st Degree)      |
+| 10   | Misdemeanor                | M2    | Misdemeanor (2nd Degree)      |
+| 11   | Misdemeanor                | M3    | Misdemeanor (3rd Degree)      |
+| 12   | Summary Offenses           | S1    | Summary Offenses (1st Degree) |
+| 13   | Summary Offenses           | S2    | Summary Offenses (2nd Degree) |
+| 14   | Summary Offenses           | S3    | Summary Offenses (3rd Degree) |
+| 15   | Summary Offenses           | S     | Summary Offenses              |
+| 16   | Indirect Criminal Contempt | IC    | Indirect Criminal Contempt    |
 
 ### court type
 In this dataset, there are 3 discrete values associated with court type: "PAC", "CP", "MC", under column name `court_office__court__court_type`
@@ -151,11 +163,33 @@ There are 5 types of sentencing in the dataset.-
 5. IPP - 2456 datapoints
 
 Since there is an imbalance in the dataset we will have to use artificial oversampling using SMOTE(Synthetic Minority Over-sampling Technique). 
-Once the data preprocessing is done, we developed 4 models to predict the sentencing. Since it is a classification problem.-
+Once the data preprocessing is done, we developed 5 models to predict the sentencing. Since it is a classification problem.
 
-1. Multiclass Classification using deep learning - accuracy = 70%
-2. Decision Tree Multiclass Classifier - accuracy = 63%
-3. Naive Bayes Multiclass Classifier - accuracy = 72%
-4. XGBoost Multiclass Classifier - accuracy = 73%
+1. Multiclass Classification using deep learning - accuracy = 81%
+3. Adaptive Boost Classifier - accuracy = 69.9%
+4. XGBoost Classifier - accuracy = 69.9%
+4. Random Forest Classifier = 60.5%
+5. Decision Tree Classifier - accuracy = 60.1%
 
+Full report: 
 
+| Model                    | Accuracy | Precision | Recall | F1    |
+| ------------------------ | -------- | --------- | ------ | ----- |
+| Decision Tree            | 0.601    | 0.885     | 0.601  | 0.695 |
+| Deep Learning Classifier | 0.81     |           |        |       |
+| AdaBoost Classifier      | 0.699    | 0.857     | 0.699  | 0.752 |
+| XG Boost Classifier      | 0.699    | 0.857     | 0.699  | 0.752 |
+| Random Forest            | 0.605    | 0.857     | 0.605  | 0.673 |
+
+# Code
+
+### Data cleaning and preprocessing
+
+- The data in `/data` directory is already the already cleaned up data from origin one.
+
+- Run the code in `/data preprocessingpreprocessing` folder can generate the train and test data samples in `/data` directory
+
+### Model training
+
+- All models except Random Forest's model are saved in `saved_models`. The model size of Random Forest is over 100mb so it is not included.
+- All scripts for model training are stored in `/models` directory. And the scripts contain 4 parts: data reading, tuning, model training and model evaluation.
